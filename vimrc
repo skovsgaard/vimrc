@@ -76,7 +76,7 @@ colorscheme zenburn
 set nocompatible
 filetype off
 
-set rtp+=/home/jsc/.vim/bundle/vundle/
+set rtp+=$HOME/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
@@ -134,7 +134,7 @@ if executable('ocamlmerlin') && has('python')
 endif
 
 """ use OCP-indent for Ocaml
-set rtp^="/home/jsc/.opam/4.02.0/share/ocp-indent/vim"
+set rtp^="$HOME/.opam/4.02.0/share/ocp-indent/vim"
 
 """ Uncomment to fold all Elixir blocks.
 "autocmd FileType elixir setlocal foldmethod=syntax 
