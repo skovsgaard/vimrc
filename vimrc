@@ -180,3 +180,5 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:airline_powerline_fonts=1
 let g:syntastic_enable_elixir_checker = 1
+
+syntax on
