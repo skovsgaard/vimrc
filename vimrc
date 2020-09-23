@@ -24,6 +24,13 @@ set pastetoggle=<F2>
 set splitbelow		" Make vertical splits go to bottom
 set splitright		" And vertical splits go right
 
+""" Colors
+set t_Co=256
+set background=dark
+if &term =~ '256color'                                                          
+  set t_ut=                                                               
+endif
+colorscheme zenburn
 
 """ Remaps to ease tab navigation in split views
 nnoremap <C-J> <C-W><C-J>
@@ -67,16 +74,11 @@ nmap <C-Right> <C-W><<C-W><
 nmap <C-Up> <C-W>-<C-W>-
 nmap <C-Down> <C-W>+<C-W>+
 
-""" Colors
-set t_Co=256
-colorscheme zenburn 
-
-
 """ Plugins
 set nocompatible
 filetype off
 
-set rtp+=$HOME/.vim/bundle/vundle/
+set rtp+=$HOME/.vim/bundle/Vundle.vim/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
@@ -118,20 +120,13 @@ Bundle 'scrooloose/syntastic'
 
 Bundle 'hylang/vim-hy'
 
-" Remove this please
-Bundle 'idris-hackers/idris-vim'
+Bundle 'davisdude/vim-love-docs'
 
-" Whitespace because fuck logic
-Bundle 'vim-scripts/whitespace-syntax-highlight'
+Bundle 'rust-lang/rust.vim'
+
+Bundle 'jakwings/vim-pony'
 
 filetype plugin indent on
-
-""" Ocaml Merlin stuff
-if executable('ocamlmerlin') && has('python')
-  let s:ocamlmerlin = substitute(system('opam config var share'), '\n$', '', '''') . "/merlin"
-  execute "set rtp+=".s:ocamlmerlin."/vim"
-  execute "set rtp+=".s:ocamlmerlin."/vimbufsync"
-endif
 
 """ use OCP-indent for Ocaml
 set rtp^="$HOME/.opam/4.02.0/share/ocp-indent/vim"
@@ -147,6 +142,9 @@ au BufRead,BufNewFile *.lspy set ft=clojure
 
 """ Activate snippets for .eex files
 au BufRead,BufNewFile *.eex set ft=eex.html
+
+""" Indent Erlang by 4 spaces
+au BufRead,BufNewFile *.erl,rebar.config,*.hrl,*.yrl,*.xrl set shiftwidth=4
 
 """ Ease omnicomp
 set omnifunc=syntaxcomplete#Complete
@@ -180,5 +178,6 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:airline_powerline_fonts=1
 let g:syntastic_enable_elixir_checker = 1
+let g:syntastic_pony_checkers = ['currycomb']
 
 syntax on
